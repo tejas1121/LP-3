@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <iomanip>
+#include <algorithm>
 using namespace std;
 
 #define MAX 100
@@ -20,30 +22,17 @@ public:
             fraction[i] = 0;
         }
 
-        // Sort items in descending order of ratio
+        // Sort in descending order of ratio
         for (int i = 0; i < n - 1; i++)
         {
             for (int j = i + 1; j < n; j++)
             {
                 if (ratio[i] < ratio[j])
                 {
-                    float temp;
-
-                    temp = ratio[i];
-                    ratio[i] = ratio[j];
-                    ratio[j] = temp;
-
-                    temp = weight[i];
-                    weight[i] = weight[j];
-                    weight[j] = temp;
-
-                    temp = profit[i];
-                    profit[i] = profit[j];
-                    profit[j] = temp;
-
-                    int t = item[i];
-                    item[i] = item[j];
-                    item[j] = t;
+                    swap(ratio[i], ratio[j]);
+                    swap(weight[i], weight[j]);
+                    swap(profit[i], profit[j]);
+                    swap(item[i], item[j]);
                 }
             }
         }
@@ -51,7 +40,7 @@ public:
         float totalProfit = 0;
         float remaining = W;
 
-        // Select items greedily
+        // Greedy selection
         for (int i = 0; i < n; i++)
         {
             if (remaining >= weight[i])
@@ -72,18 +61,41 @@ public:
             }
         }
 
-        // Display result
-        cout << "\nItem\tWeight\tProfit\tFraction\n";
+        // Display formatted table
+        cout << "\n========== FRACTIONAL KNAPSACK ==========\n\n";
+
+        cout << left
+             << setw(10) << "Item"
+             << setw(12) << "Weight"
+             << setw(12) << "Profit"
+             << setw(12) << "Ratio"
+             << setw(12) << "Fraction"
+             << setw(15) << "Profit Earned"
+             << endl;
+
+        cout << string(73, '-') << endl;
+
+        cout << fixed << setprecision(2);
 
         for (int i = 0; i < n; i++)
         {
-            cout << item[i] + 1 << "\t"
-                 << weight[i] << "\t"
-                 << profit[i] << "\t"
-                 << fraction[i] << endl;
+            cout << left
+                 << setw(10) << item[i] + 1
+                 << setw(12) << weight[i]
+                 << setw(12) << profit[i]
+                 << setw(12) << ratio[i]
+                 << setw(12) << fraction[i]
+                 << setw(15) << profit[i] * fraction[i]
+                 << endl;
         }
 
-        cout << "\nMaximum Profit = " << totalProfit << endl;
+        cout << string(73, '-') << endl;
+
+        cout << "\nMaximum Profit = " << totalProfit;
+        cout << "\nTotal Weight Used = " << W - remaining;
+        cout << "\nRemaining Capacity = " << remaining;
+
+        cout << "\n=========================================\n";
     }
 };
 
