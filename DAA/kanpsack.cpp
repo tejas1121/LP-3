@@ -1,124 +1,91 @@
 
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-#define MAX 100
-
-class Knapsack
+struct Item
 {
-public:
-    void solve(int n, int W, int profit[], int weight[])
-    {
-        int dp[MAX][MAX] = {0};
-
-        // Dynamic Programming
-        for (int i = 1; i <= n; i++)
-        {
-            for (int w = 0; w <= W; w++)
-            {
-                if (weight[i - 1] <= w)
-                {
-                    int include = profit[i - 1] +
-                                  dp[i - 1][w - weight[i - 1]];
-
-                    int exclude = dp[i - 1][w];
-
-                    dp[i][w] = max(include, exclude);
-                }
-                else
-                {
-                    dp[i][w] = dp[i - 1][w];
-                }
-            }
-        }
-
-        // Display DP Table
-        cout << "\nDP Table:\n\n";
-
-        cout << "Item/W\t";
-
-        for (int w = 0; w <= W; w++)
-            cout << w << "\t";
-
-        cout << endl;
-
-        for (int i = 0; i <= n; i++)
-        {
-            if (i == 0)
-                cout << "None\t";
-            else
-                cout << i << "\t";
-
-            for (int w = 0; w <= W; w++)
-                cout << dp[i][w] << "\t";
-
-            cout << endl;
-        }
-
-        // Maximum Profit
-        cout << "\nMaximum Profit: " << dp[n][W] << endl;
-
-        // Find Selected Items
-        cout << "Selected Items: ";
-
-        int w = W;
-
-        for (int i = n; i > 0; i--)
-        {
-            if (dp[i][w] != dp[i - 1][w])
-            {
-                cout << "Item " << i << " ";
-                w = w - weight[i - 1];
-            }
-        }
-
-        cout << endl;
-    }
+    int profit, weight;
+    double ratio;
 };
+
+bool compare(Item a, Item b)
+{
+    return a.ratio > b.ratio;
+}
 
 int main()
 {
     int n, W;
-    int profit[MAX], weight[MAX];
 
     cout << "Enter number of items: ";
     cin >> n;
 
-    if (n <= 0 || n >= MAX)
-    {
-        cout << "Invalid number of items!";
-        return 0;
-    }
-
     cout << "Enter knapsack capacity: ";
     cin >> W;
 
-    if (W < 0 || W >= MAX)
-    {
-        cout << "Invalid capacity!";
-        return 0;
-    }
+    Item item[100];
 
     for (int i = 0; i < n; i++)
     {
         cout << "\nEnter profit of item " << i + 1 << ": ";
-        cin >> profit[i];
+        cin >> item[i].profit;
 
         cout << "Enter weight of item " << i + 1 << ": ";
-        cin >> weight[i];
+        cin >> item[i].weight;
 
-        if (profit[i] < 0 || weight[i] <= 0)
+        if (item[i].profit < 0 || item[i].weight <= 0)
         {
-            cout << "Invalid profit or weight!";
+            cout << "Invalid input!";
             return 0;
+        }
+
+        item[i].ratio =
+            (double)item[i].profit / item[i].weight;
+    }
+
+    // Sort according to profit/weight ratio
+    sort(item, item + n, compare);
+
+    double totalProfit = 0;
+    int remaining = W;
+
+    cout << "\nSelected Items:\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        if (remaining == 0)
+            break;
+
+        if (item[i].weight <= remaining)
+        {
+            // Take complete item
+            totalProfit += item[i].profit;
+            remaining -= item[i].weight;
+
+            cout << "Full item selected, Ratio: "
+                 << item[i].ratio << endl;
+        }
+        else
+        {
+            // Take fractional item
+            double fraction =
+                (double)remaining / item[i].weight;
+
+            totalProfit += item[i].profit * fraction;
+
+            cout << "Fraction selected: "
+                 << fraction * 100 << "%" << endl;
+
+            remaining = 0;
         }
     }
 
-    Knapsack k;
-    k.solve(n, W, profit, weight);
+    cout << "\nMaximum Profit: " << totalProfit;
 
     return 0;
 }
+
 
 /*
 PAPER WORK (STEP-BY-STEP SOLUTION OF THE EXAMPLE)
