@@ -1,91 +1,162 @@
 
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
-struct Item
-{
-    int profit, weight;
-    double ratio;
-};
+#define MAX 100
 
-bool compare(Item a, Item b)
+class Knapsack
 {
-    return a.ratio > b.ratio;
-}
+public:
+
+    // Function to print spaces for alignment
+    void printSpaces(int n)
+    {
+        for (int i = 0; i < n; i++)
+            cout << " ";
+    }
+
+    // Function to print aligned numbers
+    void printNumber(int num, int width)
+    {
+        int temp = num;
+        int digits = 1;
+
+        while (temp >= 10)
+        {
+            digits++;
+            temp = temp / 10;
+        }
+
+        cout << num;
+        printSpaces(width - digits);
+    }
+
+    void solve(int n, int W, int profit[], int weight[])
+    {
+        int dp[MAX][MAX] = {0};
+
+        // Dynamic Programming
+        for (int i = 1; i <= n; i++)
+        {
+            for (int w = 0; w <= W; w++)
+            {
+                if (weight[i - 1] <= w)
+                {
+                    int include = profit[i - 1] +
+                                  dp[i - 1][w - weight[i - 1]];
+
+                    int exclude = dp[i - 1][w];
+
+                    if (include > exclude)
+                        dp[i][w] = include;
+                    else
+                        dp[i][w] = exclude;
+                }
+                else
+                {
+                    dp[i][w] = dp[i - 1][w];
+                }
+            }
+        }
+
+        // Display DP Table
+        cout << "\nDP Table:\n\n";
+
+        cout << "Item/W    ";
+
+        for (int w = 0; w <= W; w++)
+            printNumber(w, 5);
+
+        cout << endl;
+
+        for (int j = 0; j < 10 + (W + 1) * 5; j++)
+            cout << "-";
+
+        cout << endl;
+
+        for (int i = 0; i <= n; i++)
+        {
+            if (i == 0)
+                cout << "None      ";
+            else
+                cout << "Item " << i << "    ";
+
+            for (int w = 0; w <= W; w++)
+                printNumber(dp[i][w], 5);
+
+            cout << endl;
+        }
+
+        // Display Maximum Profit
+        cout << "\nMaximum Profit: " << dp[n][W] << endl;
+
+        // Backtracking to find selected items
+        cout << "Selected Items: ";
+
+        int w = W;
+        int totalWeight = 0;
+
+        for (int i = n; i > 0; i--)
+        {
+            if (dp[i][w] != dp[i - 1][w])
+            {
+                cout << "Item " << i << " ";
+
+                totalWeight += weight[i - 1];
+
+                w = w - weight[i - 1];
+            }
+        }
+
+        cout << "\nTotal Weight: " << totalWeight << endl;
+    }
+};
 
 int main()
 {
     int n, W;
+    int profit[MAX], weight[MAX];
 
     cout << "Enter number of items: ";
     cin >> n;
 
+    if (n <= 0 || n >= MAX)
+    {
+        cout << "Invalid number of items!";
+        return 0;
+    }
+
     cout << "Enter knapsack capacity: ";
     cin >> W;
 
-    Item item[100];
+    if (W < 0 || W >= MAX)
+    {
+        cout << "Invalid capacity!";
+        return 0;
+    }
 
+    // Input item details
     for (int i = 0; i < n; i++)
     {
         cout << "\nEnter profit of item " << i + 1 << ": ";
-        cin >> item[i].profit;
+        cin >> profit[i];
 
         cout << "Enter weight of item " << i + 1 << ": ";
-        cin >> item[i].weight;
+        cin >> weight[i];
 
-        if (item[i].profit < 0 || item[i].weight <= 0)
+        if (profit[i] < 0 || weight[i] <= 0)
         {
-            cout << "Invalid input!";
+            cout << "Invalid profit or weight!";
             return 0;
         }
-
-        item[i].ratio =
-            (double)item[i].profit / item[i].weight;
     }
 
-    // Sort according to profit/weight ratio
-    sort(item, item + n, compare);
-
-    double totalProfit = 0;
-    int remaining = W;
-
-    cout << "\nSelected Items:\n";
-
-    for (int i = 0; i < n; i++)
-    {
-        if (remaining == 0)
-            break;
-
-        if (item[i].weight <= remaining)
-        {
-            // Take complete item
-            totalProfit += item[i].profit;
-            remaining -= item[i].weight;
-
-            cout << "Full item selected, Ratio: "
-                 << item[i].ratio << endl;
-        }
-        else
-        {
-            // Take fractional item
-            double fraction =
-                (double)remaining / item[i].weight;
-
-            totalProfit += item[i].profit * fraction;
-
-            cout << "Fraction selected: "
-                 << fraction * 100 << "%" << endl;
-
-            remaining = 0;
-        }
-    }
-
-    cout << "\nMaximum Profit: " << totalProfit;
+    // Create object and solve
+    Knapsack k;
+    k.solve(n, W, profit, weight);
 
     return 0;
 }
-
 
 /*
 PAPER WORK (STEP-BY-STEP SOLUTION OF THE EXAMPLE)
@@ -96,6 +167,13 @@ PAPER WORK (STEP-BY-STEP SOLUTION OF THE EXAMPLE)
    Item 3 = C (p=7,  w=5)
    Item 4 = D (p=10, w=7)
    W = 8   ->  table has 5 rows (i = 0..4) and 9 columns (w = 0..8)
+   \[
+DP[i][w]=\max
+\begin{cases}
+DP[i-1][w]\\
+P_i+DP[i-1][w-W_i]
+\end{cases}
+\]
 
 ---------------------------------------------------------------------
 STEP 0 : Row i = 0 (no item)  ->  all zeros

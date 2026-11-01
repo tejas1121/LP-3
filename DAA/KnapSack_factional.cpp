@@ -1,7 +1,6 @@
 
 #include <iostream>
 #include <iomanip>
-#include <algorithm>
 using namespace std;
 
 #define MAX 100
@@ -22,7 +21,7 @@ public:
             fraction[i] = 0;
         }
 
-        // Sort in descending order of ratio
+        // Sort items in descending order of ratio
         for (int i = 0; i < n - 1; i++)
         {
             for (int j = i + 1; j < n; j++)
@@ -40,7 +39,7 @@ public:
         float totalProfit = 0;
         float remaining = W;
 
-        // Greedy selection
+        // Select items greedily
         for (int i = 0; i < n; i++)
         {
             if (remaining >= weight[i])
@@ -61,41 +60,45 @@ public:
             }
         }
 
-        // Display formatted table
+        // Display formatted result
+        cout << fixed << setprecision(2);
+
         cout << "\n========== FRACTIONAL KNAPSACK ==========\n\n";
 
-        cout << left
-             << setw(10) << "Item"
-             << setw(12) << "Weight"
+        cout << left << setw(12) << "Item"
+             << right << setw(12) << "Weight"
              << setw(12) << "Profit"
              << setw(12) << "Ratio"
              << setw(12) << "Fraction"
-             << setw(15) << "Profit Earned"
+             << setw(15) << "Selected Wt."
              << endl;
 
-        cout << string(73, '-') << endl;
-
-        cout << fixed << setprecision(2);
+        cout << string(75, '-') << endl;
 
         for (int i = 0; i < n; i++)
         {
-            cout << left
-                 << setw(10) << item[i] + 1
-                 << setw(12) << weight[i]
+            cout << left << setw(12)
+                 << ("Item " + to_string(item[i] + 1))
+                 << right << setw(12) << weight[i]
                  << setw(12) << profit[i]
                  << setw(12) << ratio[i]
                  << setw(12) << fraction[i]
-                 << setw(15) << profit[i] * fraction[i]
+                 << setw(15) << weight[i] * fraction[i]
                  << endl;
         }
 
-        cout << string(73, '-') << endl;
+        cout << string(75, '-') << endl;
 
-        cout << "\nMaximum Profit = " << totalProfit;
-        cout << "\nTotal Weight Used = " << W - remaining;
-        cout << "\nRemaining Capacity = " << remaining;
+        cout << "\nMaximum Profit: Rs. "
+             << totalProfit << endl;
 
-        cout << "\n=========================================\n";
+        cout << "Used Capacity: "
+             << W - remaining << " kg" << endl;
+
+        cout << "Remaining Capacity: "
+             << remaining << " kg" << endl;
+
+        cout << "=========================================\n";
     }
 };
 
@@ -143,6 +146,7 @@ int main()
 
     return 0;
 }
+
 
 /*
 PAPER WORK (STEP-BY-STEP SOLUTION OF THE EXAMPLE)
