@@ -1,0 +1,462 @@
+Practical 1: Uber.ipynb
+Starting practical
+Title: Uber Fare Prediction using Linear Regression and Random Forest Regression.
+Important Viva Questions and Answers
+Q1. What is the aim of this practical?
+
+Ans: To predict Uber ride fares using Machine Learning algorithms such as Linear Regression and Random Forest Regression.
+
+Q2. Which dataset is used?
+
+Ans: Uber dataset (uber.csv).
+
+Q3. Which libraries are used?
+
+Ans:
+- Pandas – Data manipulation.
+- NumPy – Numerical calculations.
+- Matplotlib – Data visualization.
+- Seaborn – Statistical visualization.
+- Scikit-learn – Machine Learning algorithms.
+Q4. What is Linear Regression?
+
+Ans: Linear Regression is a supervised machine learning algorithm used to predict continuous numerical values.
+
+Q5. What is Random Forest Regression?
+
+Ans: It is an ensemble learning algorithm that combines multiple decision trees to predict a numerical value.
+
+Q6. What is the difference between classification and regression?
+
+Ans:
+- Classification predicts categories.
+- Regression predicts numerical values.
+Q7. Why do we use train_test_split()?
+
+Ans: To divide the dataset into training and testing data.
+
+Q8. What is the purpose of test_size=0.2?
+
+Ans: 80% data is used for training and 20% for testing.
+
+Q9. What is random_state=42?
+
+Ans: It ensures reproducible results by maintaining the same random split.
+
+Q10. What is data preprocessing?
+
+Ans: Data preprocessing is the process of cleaning and preparing raw data before applying a machine learning algorithm.
+
+Q11. Why do we use dropna()?
+
+Ans: To remove rows containing missing values.
+
+Q12. What is the Haversine formula?
+
+Ans: It calculates the geographical distance between two points on the Earth's surface using latitude and longitude.
+
+Q13. Why do we convert pickup_datetime into hour, day, month and year?
+
+Ans: To extract useful time-related features for fare prediction.
+
+Q14. What is an outlier?
+
+Ans: An outlier is a data value that differs significantly from other observations.
+
+Q15. Why do we calculate distance_km?
+
+Ans: Because the distance travelled is an important factor affecting Uber fare.
+
+Q16. What is R² score?
+
+Ans: R² score measures how well the model explains variations in the target variable. Higher is generally better.
+
+Q17. What is RMSE?
+
+Ans: Root Mean Squared Error measures the square root of the average squared prediction errors. Lower is better.
+
+Q18. What is MAE?
+
+Ans: Mean Absolute Error measures the average absolute difference between actual and predicted values.
+
+Q19. Why do we use a heatmap?
+
+Ans: To visualize the correlation between numerical features.
+
+Q20. Which algorithms are compared in this practical?
+
+Ans: Linear Regression and Random Forest Regression, using R², RMSE and MAE.
+
+
+
+
+
+Practical 2: diabetes.ipynb
+Diabetes Prediction using KNN
+Aim: To predict whether a person has diabetes or not using the K-Nearest Neighbors (KNN) classification algorithm.
+20 Most Important Viva Questions with Answers
+Q1. What is the aim of this practical?
+
+Ans: To predict diabetes using patient medical information and the KNN machine learning algorithm.
+
+Q2. Which dataset is used?
+
+Ans: Diabetes dataset (diabetes.csv).
+
+Q3. How many rows and columns are present in the dataset?
+
+Ans: 768 rows and 9 columns.
+
+Q4. What are the features used in this dataset?
+
+Ans:
+1. Pregnancies
+2. Glucose
+3. BloodPressure
+4. SkinThickness
+5. Insulin
+6. BMI
+7. Pedigree
+8. Age
+Q5. What is the target variable?
+
+Ans: Outcome, which indicates:
+- 0 = No diabetes
+- 1 = Diabetes
+Q6. What is KNN?
+
+Ans: K-Nearest Neighbors is a supervised machine learning algorithm used for classification and regression.
+
+Q7. How does KNN work?
+
+Ans: It calculates the distance between data points and predicts the class based on the majority class among the nearest K neighbors.
+
+Q8. What is the value of K in your practical?
+
+Ans: K = 5 (n_neighbors=5).
+
+Q9. What is Euclidean distance?
+
+Ans: It is the straight-line distance between two data points.
+
+Formula:
+\[
+d=\sqrt{\sum_{i=1}^{n}(x_i-y_i)^2}
+\]
+
+Q10. Why do we use StandardScaler?
+
+Ans: To bring all features to a similar scale so that features with larger values do not dominate distance calculations.
+
+Q11. What is standardization?
+
+Ans: It transforms data so that its mean becomes 0 and standard deviation becomes 1.
+
+Q12. Why do we use train_test_split()?
+
+Ans: To divide the dataset into training and testing datasets.
+
+Q13. What is stratify=y?
+
+Ans: It maintains the same proportion of target classes in training and testing datasets.
+
+Q14. Why do we replace zero values with NaN?
+
+Ans: Because zero values in features like Glucose, BloodPressure, Insulin, BMI and SkinThickness can represent missing or invalid measurements.
+
+Q15. Why do we use fillna()?
+
+Ans: To replace missing values with the mean of the respective columns.
+
+Q16. What is a confusion matrix?
+
+Ans: It is a table used to evaluate a classification model by comparing actual and predicted values.
+
+Q17. What are TP, TN, FP and FN?
+
+Ans:
+- TP: Correctly predicted diabetic.
+- TN: Correctly predicted non-diabetic.
+- FP: Predicted diabetic but actually non-diabetic.
+- FN: Predicted non-diabetic but actually diabetic.
+Q18. What is accuracy?
+
+Ans: Accuracy is the ratio of correctly predicted observations to total observations.
+\[
+Accuracy=\frac{TP+TN}{TP+TN+FP+FN}
+\]
+
+Q19. What is the purpose of the Error Rate vs K Value graph?
+
+Ans: To find a suitable K value by comparing error rates for different K values.
+
+Q20. What accuracy did your best K model achieve?
+
+Ans: 77.27% (approximately).
+
+Important code statements to remember
+Code	Purpose
+pd.read_csv()	Load dataset
+df.shape	Display rows and columns
+df.head()	Display first 5 rows
+df.isnull().sum()	Check missing values
+train_test_split()	Split dataset
+StandardScaler()	Standardize data
+KNeighborsClassifier()	Create KNN model
+fit()	Train model
+predict()	Predict output
+accuracy_score()	Calculate accuracy
+
+
+
+
+Practical 3: email.ipynb
+Email Spam Classification
+Aim: To classify emails as Spam or Not Spam (Ham) using Machine Learning algorithms such as KNN and SVM.
+20 Important Viva Questions with Answers
+Q1. What is the aim of this practical?
+
+Ans: To identify whether an email is spam or genuine using machine learning algorithms.
+
+Q2. What is spam?
+
+Ans: Spam is an unwanted or unsolicited email, usually sent for advertising, fraud or phishing.
+
+Q3. What is Ham?
+
+Ans: Ham refers to a genuine or legitimate email.
+
+Q4. Which type of machine learning is used?
+
+Ans: Supervised Machine Learning because the dataset contains labelled data.
+
+Q5. Which algorithms are used?
+
+Ans:
+- KNN (K-Nearest Neighbors)
+- SVM (Support Vector Machine)
+Q6. What is KNN?
+
+Ans: KNN classifies data based on the majority class of its nearest K neighbors.
+
+Q7. What is SVM?
+
+Ans: Support Vector Machine is a supervised learning algorithm that finds the best decision boundary to separate different classes.
+
+Q8. What is a Support Vector?
+
+Ans: Support vectors are the data points closest to the decision boundary.
+
+Q9. What is a Hyperplane?
+
+Ans: A hyperplane is a decision boundary used by SVM to separate different classes.
+
+Q10. What is feature extraction?
+
+Ans: Feature extraction converts raw email text into numerical features that a machine learning model can understand.
+
+Q11. Why can't ML algorithms directly understand text?
+
+Ans: Because most ML algorithms work with numerical data, so text must be converted into numbers.
+
+Q12. What is TF-IDF?
+
+Ans: TF-IDF (Term Frequency–Inverse Document Frequency) converts text into numerical values based on the importance of words.
+
+Q13. What is tokenization?
+
+Ans: Tokenization is the process of dividing text into smaller units called words or tokens.
+
+Q14. What is classification?
+
+Ans: Classification is a supervised learning technique used to predict predefined categories or classes.
+
+Q15. Why do we split the dataset into training and testing data?
+
+Ans: To train the model and evaluate its performance on unseen data.
+
+Q16. What is a confusion matrix?
+
+Ans: It evaluates a classification model by comparing actual and predicted classes.
+
+Q17. What is precision?
+
+Ans: Precision measures how many predicted spam emails are actually spam.
+
+Q18. What is recall?
+
+Ans: Recall measures how many actual spam emails are correctly identified.
+
+Q19. What is F1-score?
+
+Ans: F1-score is the harmonic mean of precision and recall.
+
+Q20. What is the difference between KNN and SVM?
+
+Ans:
+KNN	SVM
+Distance-based algorithm	Boundary-based algorithm
+Lazy learning	Eager learning
+Uses nearest neighbors	Uses hyperplane
+Simple to understand	Effective in high-dimensional data
+
+
+Important concepts to remember
+Term	Meaning
+Spam	Unwanted email
+Ham	Genuine email
+TF-IDF	Text-to-numerical conversion
+KNN	Nearest-neighbor classification
+SVM	Support Vector Machine
+Precision	Correct positive predictions
+Recall	Actual positives correctly identified
+F1-score	Balance between precision and recall
+
+
+
+
+Practical 4: gradient descent.ipynb
+Topic: Implementation of Gradient Descent
+
+I couldn't retrieve the notebook's code, so these are the most important general viva questions for this practical—not verified against your exact implementation.
+
+1. What is Gradient Descent?
+It is an optimization algorithm used to minimize a cost or loss function.
+
+2. Why is Gradient Descent used?
+To find the optimal values of model parameters.
+
+3. What is a cost function?
+It measures the difference between actual and predicted values.
+
+4. What is the learning rate?
+It controls how much the parameters change in each iteration.
+
+5. What happens if the learning rate is too high?
+The algorithm may overshoot the minimum and fail to converge.
+
+6. What happens if the learning rate is too low?
+Training becomes very slow.
+
+7. What is an iteration?
+One complete update of model parameters.
+
+8. What is convergence?
+When the cost function stops decreasing significantly.
+
+9. What is the gradient?
+It represents the slope or direction of the steepest increase of the cost function.
+
+10. Why do we subtract the gradient?
+To move towards the minimum of the cost function.
+
+11. What is the Gradient Descent update rule?
+\(\theta = \theta - \alpha \frac{dJ}{d\theta}\)
+
+12. What is \(\alpha\)?
+Learning rate.
+
+13. What is \(J(\theta)\)?
+Cost function.
+
+14. What is a local minimum?
+A point where the cost is lower than nearby points.
+
+15. Name the three types of Gradient Descent.
+Batch, Stochastic, and Mini-batch Gradient Descent.
+
+16. What is Batch Gradient Descent?
+It uses the entire dataset for one parameter update.
+
+17. What is Stochastic Gradient Descent?
+It updates parameters using one training example at a time.
+
+18. What is Mini-batch Gradient Descent?
+It updates parameters using a small group of training examples.
+
+19. Where is Gradient Descent used?
+Linear Regression, Logistic Regression, and Neural Networks.
+
+20. What is the main objective of Gradient Descent?
+To minimize the cost function and improve model performance
+
+
+
+
+Practical 5: K-mean.ipynb
+Topic: K-Means Clustering
+
+I couldn't retrieve the notebook's code, so the following are important general viva questions about K-Means, not verified against your exact implementation.
+
+1. What is K-Means Clustering?
+It is an unsupervised machine learning algorithm used to divide data into K clusters.
+
+2. What is clustering?
+Grouping similar data points together.
+
+3. Why is K-Means called an unsupervised algorithm?
+Because it works without labelled output data.
+
+4. What does K represent?
+The number of clusters.
+
+5. What is a centroid?
+The centre point of a cluster.
+
+6. How does K-Means work?
+- Select K initial centroids.
+- Assign each point to the nearest centroid.
+- Recalculate centroids.
+- Repeat until clusters become stable.
+7. Which distance is commonly used in K-Means?
+Euclidean distance.
+
+8. What is Euclidean distance?
+The straight-line distance between two points.
+
+9. What is the objective of K-Means?
+To minimize the sum of squared distances between data points and their cluster centroids.
+
+10. What is inertia?
+The sum of squared distances of points from their assigned centroids.
+
+11. What is the Elbow Method?
+A method used to find a suitable number of clusters (K).
+
+12. Why is feature scaling important?
+It prevents features with larger values from dominating distance calculations.
+
+13. What is fit()?
+It trains the clustering model on the data.
+
+14. What is fit_predict()?
+It trains the model and returns cluster labels.
+
+15. What is n_clusters?
+A parameter that specifies the number of clusters.
+
+16. What is random_state?
+It makes random initialization reproducible.
+
+17. What is max_iter?
+The maximum number of iterations allowed.
+
+18. Can K-Means work with categorical data directly?
+No, categorical data must be appropriately encoded.
+
+19. What are the limitations of K-Means?
+- K must be specified.
+- Sensitive to outliers.
+- Results depend on initialization.
+- Works best with roughly spherical clusters.
+20. Give real-life applications of K-Means.
+Customer segmentation, image compression, and grouping similar documents.
+
+
+Important Python Libraries for Viva
+Library	Why is it used?
+NumPy	Mathematical calculations and working with arrays.
+Pandas	Reading, storing, cleaning and analysing datasets.
+Matplotlib	Creating graphs and visualizations.
+Seaborn	Creating attractive statistical graphs and heatmaps.
+Scikit-learn	Implementing machine learning algorithms.

@@ -1,0 +1,553 @@
+1. Fibonacci Series – Recursive and Non-Recursive
+File name: Fibonacci(2).cpp
+A. Basic Viva Questions
+Q1. What is the Fibonacci series?
+
+Ans. Fibonacci series is a sequence in which each number is the sum of the previous two numbers.
+
+Example: 0, 1, 1, 2, 3, 5, 8, 13.
+
+Q2. What is recursion?
+
+Ans. Recursion is a technique in which a function calls itself to solve a problem.
+
+Q3. What is iteration?
+
+Ans. Iteration is a process of repeating statements using loops like for, while or do-while.
+
+Q4. What is the difference between recursion and iteration?
+
+Ans.
+- Recursion uses function calls.
+- Iteration uses loops.
+- Recursion requires stack memory.
+- Iteration generally uses less memory.
+Q5. What are the base conditions in your recursive Fibonacci function?
+
+Ans. The base conditions are:
+- If n = 0, return 0.
+- If n = 1, return 1.
+Q6. Why are base conditions necessary?
+
+Ans. Base conditions stop recursive calls and prevent infinite recursion.
+
+Q7. Which formula is used in Fibonacci?
+
+Ans.
+\[
+F(n)=F(n-1)+F(n-2)
+\]
+
+B. Code-Based Viva Questions
+Q8. What is the use of fibonacciRecursive(int n)?
+
+Ans. It calculates the Fibonacci number using recursion.
+
+Q9. What is the use of fibonacciIterative(int n)?
+
+Ans. It generates the Fibonacci series using a loop.
+
+Q10. Why are variables a, b and c used?
+
+Ans.
+- a stores the previous Fibonacci number.
+- b stores the current Fibonacci number.
+- c stores the next Fibonacci number.
+Q11. Why do we write c = a + b?
+
+Ans. Because the next Fibonacci number is the sum of the previous two numbers.
+
+Q12. Why do we write a = b and b = c?
+
+Ans. To update the values for calculating the next Fibonacci number.
+
+Q13. Why is return 0 used in main()?
+
+Ans. It indicates successful termination of the program.
+
+Q14. Why do we check n <= 0?
+
+Ans. To prevent invalid input because the program requires a positive number of terms.
+C. Algorithm and Complexity Questions
+Q15. What is the time complexity of iterative Fibonacci?
+
+Ans. O(n), because the loop executes n times.
+
+Q16. What is the space complexity of iterative Fibonacci?
+
+Ans. O(1), because it uses only a fixed number of variables.
+
+Q17. What is the time complexity of recursive Fibonacci?
+
+Ans. O(2ⁿ) using the simple recursive implementation.
+
+Q18. What is the space complexity of recursive Fibonacci?
+
+Ans. O(n), because recursive function calls are stored in the call stack.
+
+Q19. Why is recursive Fibonacci slower?
+
+Ans. Because it calculates the same Fibonacci values repeatedly.
+
+Q20. Why does each recursive call generate two calls?
+
+Ans. Because the statement fibonacciRecursive(n-1) + fibonacciRecursive(n-2) calls the function twice.
+
+Q21. Which method is better and why?
+
+Ans. The iterative method is better for this program because it takes O(n) time and O(1) extra space.
+
+Q22. What happens if n = 5?
+
+Ans. The output is:
+
+0 1 1 2 3
+
+Q23. What is the maximum recursion depth?
+
+Ans. O(n), because the deepest chain of calls decreases n one step at a time.
+D. Tricky Professor Questions
+Q24. Can Fibonacci be solved using Dynamic Programming?
+
+Ans. Yes, using memoization or tabulation to avoid repeated calculations.
+
+Q25. What is the difference between memoization and tabulation?
+
+Ans.
+- Memoization is a top-down approach using recursion and storage.
+- Tabulation is a bottom-up approach using iteration and a table.
+Q26. What is a call stack?
+
+Ans. A call stack is a memory structure that stores information about active function calls.
+
+Q27. Is Fibonacci a greedy algorithm?
+
+Ans. No, Fibonacci is a mathematical sequence that can be generated using recursion, iteration or dynamic programming.
+
+Q28. Can we calculate Fibonacci without recursion?
+
+Ans. Yes, using iteration or dynamic programming.
+Important for viva
+Remember these complexity values:
+Method	Time	Space
+Recursive	O(2ⁿ)	O(n)
+Iterative	O(n)	O(1)
+
+
+2. Huffman Coding – Data Compression
+File name: huffman(1).cpp
+A. Basic Viva Questions
+Q1. What is data compression?
+
+Ans. Data compression is a technique used to reduce the size of data by representing it using fewer bits.
+
+Q2. What is Huffman coding?
+
+Ans. Huffman coding is a lossless data compression technique that assigns variable-length binary codes to characters based on their frequencies.
+
+Q3. Who developed Huffman coding?
+
+Ans. David A. Huffman developed Huffman coding in 1952.
+
+Q4. What is lossless compression?
+
+Ans. Lossless compression is a technique in which original data can be recovered without losing any information.
+
+Q5. What is the greedy approach?
+
+Ans. Greedy approach makes the best possible choice at each step to obtain an optimal solution.
+
+Q6. Why is Huffman coding called a greedy algorithm?
+
+Ans. Because it repeatedly selects two characters or nodes having the minimum frequencies.
+
+Q7. What is a Huffman tree?
+
+Ans. A Huffman tree is a binary tree used to generate unique binary codes for characters.
+
+Q8. What is a prefix code?
+
+Ans. A prefix code is a code in which no code is the prefix of another code.
+B. Code-Based Viva Questions
+Q9. What is the use of #define MAX 100?
+
+Ans. It defines the maximum number of characters as 100.
+
+Q10. Why is a Node class used?
+
+Ans. It stores character, frequency and left and right child information.
+
+Q11. What is the use of char ch?
+
+Ans. It stores the character.
+
+Q12. What is the use of int freq?
+
+Ans. It stores the frequency of a character.
+
+Q13. Why are left and right initialized to -1?
+
+Ans. To indicate that the node does not have left or right children.
+
+Q14. What is the use of the active[] array?
+
+Ans. It keeps track of active nodes during Huffman tree construction.
+
+Q15. Why is total = 2 * n - 1 used?
+
+Ans. A full binary tree with n leaf nodes contains 2n - 1 total nodes.
+
+Q16. What is the use of min1 and min2?
+
+Ans. They store the indices of the two nodes having minimum frequencies.
+
+Q17. Why do we add the two minimum frequencies?
+
+Ans. To create a new internal node whose frequency is the sum of both selected frequencies.
+
+Q18. What is the use of printCodes()?
+
+Ans. It traverses the Huffman tree and displays the binary code of each character.
+
+Q19. Why is 0 assigned to the left branch and 1 to the right branch?
+
+Ans. It is a coding convention used to generate binary codes. The reverse assignment is also valid.
+
+Q20. What is a leaf node?
+
+Ans. A leaf node is a node that does not have any children.
+C. Algorithm-Based Viva Questions
+Q21. Explain the working of Huffman coding.
+
+Ans.
+1. Calculate the frequency of each character.
+2. Select two minimum-frequency nodes.
+3. Combine them into a new node.
+4. Repeat until only one node remains.
+5. Traverse the tree to generate binary codes.
+Q22. Why do frequently occurring characters get shorter codes?
+
+Ans. To reduce the total number of bits required for storing data.
+
+Q23. Why do less frequently occurring characters get longer codes?
+
+Ans. Because Huffman coding minimizes the total weighted code length.
+
+Q24. What is the time complexity of your Huffman program?
+
+Ans. O(n² log n) is not the complexity here. In this implementation, finding the two minimum nodes takes O(n) per iteration, and there are O(n) iterations. Therefore, time complexity is O(n²).
+
+Q25. What is the space complexity?
+
+Ans. O(n), because the tree and active arrays store at most 2n - 1 nodes.
+
+Q26. What is the difference between fixed-length and variable-length coding?
+
+Ans.
+- Fixed-length coding uses the same number of bits for every character.
+- Variable-length coding uses different numbers of bits depending on frequency.
+D. Tricky Professor Questions
+Q27. Is Huffman coding lossless or lossy?
+
+Ans. Huffman coding is lossless compression.
+
+Q28. Can two characters have the same Huffman code?
+
+Ans. No, every character must have a unique code.
+
+Q29. Can two characters have the same frequency?
+
+Ans. Yes, two or more characters can have the same frequency.
+
+Q30. What happens if there is only one character?
+
+Ans. The tree contains only one node. In this implementation, its generated code is an empty string.
+
+Q31. What is the root node frequency?
+
+Ans. It is equal to the sum of the frequencies of all characters.
+
+Q32. Where is Huffman coding used?
+
+Ans. It is used in file compression formats and multimedia compression systems.
+
+Q33. What is the difference between encoding and decoding?
+
+Ans.
+- Encoding converts original data into binary codes.
+- Decoding converts binary codes back into original data.
+Q34. Why is Huffman coding better than fixed-length coding?
+
+Ans. It can reduce the total number of bits by assigning shorter codes to frequently occurring characters.
+Important for viva
+Remember:
+- Algorithm: Greedy
+- Data structure: Binary tree
+- Compression: Lossless
+- Code type: Variable-length prefix code
+- Time complexity: O(n²)
+- Space complexity: O(n)
+
+
+
+PRACTICAL 3 – Viva Questions and Answers
+Practical 3
+File Name: kanpsack(1).cpp
+
+Topic: Fractional Knapsack Problem using Greedy Method
+
+Important: Your actual C++ code implements Fractional Knapsack using Greedy Method, not 0/1 Knapsack using Dynamic Programming. The paper-work comments at the bottom describe a different DP solution, so prepare according to the actual code.
+Viva Questions with Answers
+Q1. What is the Knapsack Problem?
+
+Ans: It is an optimization problem in which we select items to maximize profit without exceeding the knapsack capacity.
+
+Q2. Which method is used in your program?
+
+Ans: Greedy Method.
+
+Q3. What is the Fractional Knapsack Problem?
+
+Ans: It allows us to take either a complete item or a fraction of an item.
+
+Q4. What is the Greedy Method?
+
+Ans: It is an algorithmic approach that selects the best possible option at each step.
+
+Q5. What is the formula for the profit-to-weight ratio?
+
+Ans:
+\[
+Ratio = \frac{Profit}{Weight}
+\]
+
+Q6. Why do we calculate the ratio?
+
+Ans: To identify which item gives the maximum profit per unit of weight.
+
+Q7. Why do we sort items in descending order?
+
+Ans: To select items having the highest profit-to-weight ratio first.
+
+Q8. Which sorting function is used in your code?
+
+Ans: The sort() function from the C++ STL library.
+
+Q9. What is the purpose of the compare() function?
+
+Ans: It sorts items in descending order of their profit-to-weight ratio.
+
+Q10. What is the purpose of the Item structure?
+
+Ans: It stores the profit, weight, and ratio of each item.
+
+Q11. What is the purpose of the remaining variable?
+
+Ans: It stores the remaining capacity of the knapsack.
+
+Q12. What happens if the complete item fits into the knapsack?
+
+Ans: The complete item is selected, its profit is added, and its weight is subtracted from the remaining capacity.
+
+Q13. What happens if the complete item does not fit?
+
+Ans: A fraction of that item is selected to fill the remaining capacity.
+
+Q14. How do you calculate the fraction of an item?
+
+Ans:
+\[
+Fraction = \frac{Remaining\ Capacity}{Item\ Weight}
+\]
+
+Q15. How is fractional profit calculated?
+
+Ans:
+\[
+Profit = Item\ Profit \times Fraction
+\]
+
+Q16. What is the time complexity of your program?
+
+Ans: \(O(n\log n)\), because sorting takes \(O(n\log n)\) time.
+
+Q17. What is the space complexity?
+
+Ans: \(O(n)\) for storing the items.
+
+Q18. Why is Greedy Method suitable for Fractional Knapsack?
+
+Ans: Because selecting items in descending profit-to-weight ratio gives the optimal solution.
+
+Q19. What is the difference between Fractional and 0/1 Knapsack?
+
+Ans:
+Fractional Knapsack	0/1 Knapsack
+Items can be divided.	Items cannot be divided.
+Uses Greedy Method.	Commonly uses Dynamic Programming.
+Selects fractions if needed.	Selects either 0 or 1 item.
+\(O(n\log n)\)	\(O(nW)\) using DP.
+
+Q20. What is the purpose of type casting (double)?
+
+Ans: It converts an integer value into a double value to perform decimal calculations accurately.
+
+Q21. Why is the weight not allowed to be zero?
+
+Ans: Because division by zero is undefined when calculating the ratio.
+
+Q22. What is the purpose of totalProfit?
+
+Ans: It stores the total profit obtained from the selected items.
+
+Q23. Can Greedy Method solve every Knapsack Problem optimally?
+
+Ans: No. It gives an optimal solution for Fractional Knapsack, but not always for 0/1 Knapsack.
+
+Q24. What is the role of the break statement?
+
+Ans: It stops the loop when the remaining capacity becomes zero.
+
+Q25. Which header file is used for sorting?
+
+Ans: <algorithm>.
+
+
+
+PRACTICAL 4 – Top 20 Important Viva Questions
+File Name: KnapSack_factional(1).cpp
+
+Topic: Fractional Knapsack using Greedy Method
+
+1. Q. What is the Fractional Knapsack Problem?
+Ans: It is an optimization problem in which we can select complete items or fractions of items to maximize profit.
+
+2. Q. Which algorithm is used in your program?
+Ans: Greedy Algorithm.
+
+3. Q. What is the Greedy Method?
+Ans: It selects the best possible option at each step to achieve an optimal solution.
+
+4. Q. What is the formula for the profit-to-weight ratio?
+Ans: Ratio = Profit / Weight.
+
+5. Q. Why do we calculate the ratio?
+Ans: To find the profit earned per unit of weight.
+
+6. Q. Why do we sort items in descending order of ratio?
+Ans: To select items with the highest profit per unit weight first.
+
+7. Q. Which sorting technique is used in your code?
+Ans: Nested loops with swap().
+
+8. Q. What is the purpose of the swap() function?
+Ans: It exchanges two items during sorting.
+
+9. Q. What is the purpose of the fraction[] array?
+Ans: It stores the fraction of each item selected.
+
+10. Q. What does fraction = 1 indicate?
+Ans: The complete item is selected.
+
+11. Q. How do you calculate the fraction of an item?
+Ans: Fraction = Remaining Capacity / Item Weight.
+
+12. Q. How is total profit calculated?
+Ans: Total Profit = Sum of (Item Profit × Selected Fraction).
+
+13. Q. What is the purpose of the remaining variable?
+Ans: It stores the remaining capacity of the knapsack.
+
+14. Q. What happens when the knapsack becomes full?
+Ans: The loop stops using the break statement.
+
+15. Q. Why is zero weight not allowed?
+Ans: Because division by zero is undefined while calculating the ratio.
+
+16. Q. What is the time complexity of your program?
+Ans: \(O(n^2)\), because nested loops are used for sorting.
+
+17. Q. What is the space complexity?
+Ans: \(O(n)\), because arrays are used to store item details.
+
+18. Q. Can Greedy Method always solve 0/1 Knapsack optimally?
+Ans: No. Greedy by ratio does not always give the optimal solution for 0/1 Knapsack.
+
+19. Q. What is the difference between Fractional and 0/1 Knapsack?
+Ans: Fractional Knapsack allows dividing items, whereas 0/1 Knapsack allows only complete selection or rejection.
+
+20. Q. What is the purpose of setprecision(2) and fixed?
+Ans: They display floating-point values with two digits after the decimal point
+
+
+
+practical 5 is not uploaded yet
+
+
+
+
+PRACTICAL 6 – Top 20 Important Viva Questions
+Practical 6
+File Name: N_queen.cpp
+
+Topic: N-Queens Problem using Backtracking
+Viva Questions with Short Answers
+1. Q. What is the N-Queens Problem?
+Ans: It is a problem of placing N queens on an N×N chessboard so that no two queens attack each other.
+
+2. Q. Which algorithm is used in your program?
+Ans: Backtracking Algorithm.
+
+3. Q. What is Backtracking?
+Ans: It is an algorithmic technique that tries possible solutions and removes choices that lead to invalid solutions.
+
+4. Q. What is a Queen in chess?
+Ans: A queen can move horizontally, vertically, and diagonally.
+
+5. Q. What is the condition for placing queens?
+Ans: No two queens should be in the same row, column, or diagonal.
+
+6. Q. What is the purpose of the isSafe() function?
+Ans: It checks whether a queen can be safely placed at a particular position.
+
+7. Q. What does the solve() function do?
+Ans: It places queens row by row and uses backtracking when a position is unsafe.
+
+8. Q. What is the purpose of the board[][] array?
+Ans: It represents the chessboard and stores queen positions.
+
+9. Q. What does 1 represent in the board?
+Ans: It represents the position of a queen.
+
+10. Q. What does 0 represent?
+Ans: It represents an empty cell.
+
+11. Q. Why do we check the upper-left diagonal?
+Ans: To ensure that no previously placed queen attacks diagonally from the upper-left side.
+
+12. Q. Why do we check the upper-right diagonal?
+Ans: To ensure that no previously placed queen attacks diagonally from the upper-right side.
+
+13. Q. Why do we check only previous rows?
+Ans: Because the program places queens row by row, so future rows do not contain queens yet.
+
+14. Q. What is the purpose of the row variable?
+Ans: It represents the current row where the program tries to place a queen.
+
+15. Q. What is backtracking in your program?
+Ans: If a queen cannot lead to a valid solution, the program removes it and tries another column.
+
+16. Q. What is the time complexity of the N-Queens problem?
+Ans: Commonly expressed as \(O(N!)\) as a worst-case upper-bound estimate for the backtracking approach.
+
+17. Q. What is the space complexity of your program?
+Ans: \(O(N^2)\) for the board and \(O(N)\) for recursion stack space. Overall, \(O(N^2)\).
+
+18. Q. What is the base condition of the recursive function?
+Ans: When row == n, all queens have been placed successfully.
+
+19. Q. What is the purpose of the start() function?
+Ans: It initializes the board, validates input, places the first queen in the user-specified column, and starts solving.
+
+20. Q. Does your program always find a solution for every first-column choice?
+Ans: No. For example, in the 4-Queens problem, choosing the first column may lead to no solution. The program can find a solution with another first-column choice.

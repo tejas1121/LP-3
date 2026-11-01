@@ -1,0 +1,397 @@
+Practical 1 – BT1
+Installation of MetaMask and Study Spending Ether per Transaction
+Viva Questions & Answers
+Q1. What is MetaMask?
+
+Ans. MetaMask is a cryptocurrency wallet used to store, send and receive Ethereum and other supported cryptocurrencies.
+
+Q2. What is Ethereum?
+
+Ans. Ethereum is a decentralized blockchain platform used to create smart contracts and decentralized applications (DApps).
+
+Q3. What is Ether (ETH)?
+
+Ans. Ether is the native cryptocurrency of the Ethereum blockchain. It is used to pay transaction fees.
+
+Q4. What is a cryptocurrency wallet?
+
+Ans. A cryptocurrency wallet is a software or hardware tool used to manage crypto assets and interact with blockchain networks.
+
+Q5. What is Gas in Ethereum?
+
+Ans. Gas is the unit used to measure the computational work required to perform a transaction on Ethereum.
+
+Q6. What is Gas Fee?
+
+Ans. Gas fee is the amount of Ether paid to process a transaction on the Ethereum network.
+
+Q7. How is the Ethereum transaction fee calculated?
+
+Ans.
+
+Transaction Fee = Gas Used × Gas Price
+
+Q8. What is the smallest unit of Ether?
+
+Ans. Wei is the smallest unit of Ether.
+
+1 ETH = 10¹⁸ Wei.
+
+Q9. What is Gwei?
+
+Ans. Gwei is a unit of Ether commonly used to represent gas prices.
+
+1 Gwei = 10⁹ Wei.
+
+Q10. Why do we pay transaction fees?
+
+Ans. Transaction fees compensate validators for processing and validating transactions on Ethereum.
+
+Q11. What happens if the gas limit is too low?
+
+Ans. The transaction may fail because there is insufficient gas to complete the execution.
+
+Q12. What is a test network?
+
+Ans. A test network is a blockchain network used for testing transactions and smart contracts without using real cryptocurrency.
+
+Q13. What is the difference between Mainnet and Testnet?
+
+Ans.
+- Mainnet: Real Ethereum network using real ETH.
+- Testnet: Testing network using test ETH.
+Q14. Is MetaMask a centralized or decentralized wallet?
+
+Ans. MetaMask is a non-custodial wallet because users control their own private keys.
+
+Q15. What is the purpose of this practical?
+
+Ans. To install MetaMask, understand Ethereum transactions and study the Ether spent as transaction fees
+
+
+
+Practical 2 – BT2
+Create Your Own Wallet Using MetaMask for Crypto Transactions
+Viva Questions & Answers
+Q1. What is a crypto wallet?
+
+Ans. A crypto wallet is a digital wallet used to store, send and receive cryptocurrencies.
+
+Q2. What is MetaMask?
+
+Ans. MetaMask is a non-custodial cryptocurrency wallet used to interact with the Ethereum blockchain.
+
+Q3. What is a public key?
+
+Ans. A public key is a cryptographic key used to generate a wallet address and receive cryptocurrency.
+
+Q4. What is a private key?
+
+Ans. A private key is a secret key used to access and authorize transactions from a crypto wallet.
+
+Q5. What is a wallet address?
+
+Ans. A wallet address is a unique hexadecimal address used to send and receive cryptocurrency. Ethereum addresses usually start with 0x.
+
+Q6. What is a Secret Recovery Phrase?
+
+Ans. It is a sequence of 12 or more words used to recover a cryptocurrency wallet.
+
+Q7. What happens if we lose our private key and recovery phrase?
+
+Ans. We may permanently lose access to our wallet and its funds.
+
+Q8. What is the difference between a public key and a private key?
+
+Ans.
+- Public Key: Used to receive cryptocurrency.
+- Private Key: Used to authorize transactions.
+Q9. What is a non-custodial wallet?
+
+Ans. A non-custodial wallet gives users complete control over their private keys and funds.
+
+Q10. Can we create multiple accounts in MetaMask?
+
+Ans. Yes, MetaMask allows users to create and manage multiple accounts.
+
+Q11. What is a blockchain transaction?
+
+Ans. A blockchain transaction is an operation that transfers cryptocurrency or interacts with a smart contract.
+
+Q12. What is a digital signature?
+
+Ans. A digital signature is a cryptographic mechanism used to verify the authenticity and ownership of a transaction.
+
+Q13. Is MetaMask itself a blockchain?
+
+Ans. No, MetaMask is a wallet that connects users to blockchain networks.
+
+Q14. Can we recover a MetaMask wallet on another device?
+
+Ans. Yes, by importing the wallet using its Secret Recovery Phrase.
+
+Q15. What is the purpose of this practical?
+
+Ans. To create a MetaMask wallet and understand how to send and receive cryptocurrency securely.
+
+
+Practical 3 – BT3
+Write a Smart Contract on a Test Network for a Bank Account of a Customer
+
+Operations:
+1. Deposit Money
+2. Withdraw Money
+3. Show Balance
+Viva Questions & Answers
+Q1. What is a smart contract?
+
+Ans. A smart contract is a self-executing program stored on a blockchain that automatically executes predefined conditions.
+
+Q2. Which programming language is used to write smart contracts in Ethereum?
+
+Ans. Solidity.
+
+Q3. What is Solidity?
+
+Ans. Solidity is a high-level, object-oriented programming language used to develop smart contracts on Ethereum.
+
+Q4. What is the purpose of this practical?
+
+Ans. To create a bank account smart contract that allows users to deposit money, withdraw money and check their balance.
+
+Q5. What is Remix IDE?
+
+Ans. Remix IDE is an online development environment used to write, compile, deploy and test Solidity smart contracts.
+
+Q6. What is the use of pragma solidity?
+
+Ans. It specifies the compiler version used for compiling the Solidity program.
+
+Example:
+pragma solidity ^0.8.0;
+
+
+Q7. What is a contract in Solidity?
+
+Ans. A contract is a collection of code and data stored at a specific address on the blockchain.
+
+Q8. What is the use of mapping in Solidity?
+
+Ans. Mapping stores data in key-value pairs.
+
+Example:
+mapping(address => uint) balances;
+
+
+Q9. What is the use of msg.sender?
+
+Ans. msg.sender represents the address of the account that called the function.
+
+Q10. What is the use of msg.value?
+
+Ans. msg.value represents the amount of Ether (in Wei) sent with a payable function call.
+
+Q11. What is the payable keyword?
+
+Ans. payable allows a function or address to receive Ether.
+
+Q12. What is the use of the require() statement?
+
+Ans. It checks a condition. If the condition is false, the transaction is reverted.
+
+Q13. Why do we use deposit() function?
+
+Ans. The deposit function accepts Ether and adds the deposited amount to the user's balance.
+
+Q14. Why do we use withdraw() function?
+
+Ans. The withdraw function transfers Ether from the contract to the user's wallet after checking the available balance.
+
+Q15. Why do we use showBalance() function?
+
+Ans. It displays the current balance of the customer's account.
+
+Q16. What is the difference between view and pure functions?
+
+Ans.
+- view: Reads blockchain data but does not modify it.
+- pure: Neither reads nor modifies blockchain data.
+Q17. What is Wei?
+
+Ans. Wei is the smallest unit of Ether.
+
+1 ETH = 10¹⁸ Wei.
+
+Q18. What happens when a user withdraws more money than their balance?
+
+Ans. The transaction is reverted using the require() condition.
+
+Q19. What is the difference between send(), transfer() and call()?
+
+Ans. These are methods used to send Ether. call() is the recommended low-level method for sending Ether, with proper security checks.
+
+Q20. What is deployment of a smart contract?
+
+Ans. Deployment means uploading the compiled smart contract to a blockchain network.
+
+Q21. Why do we use a test network?
+
+Ans. To test smart contracts using test Ether without spending real money.
+
+Q22. What is the difference between transaction and function call?
+
+Ans.
+- Transaction: Changes blockchain state and requires gas.
+- Function call: A read-only call does not change state and normally does not require gas.
+Q23. What is the role of gas in a smart contract?
+
+Ans. Gas measures the computational work required to execute smart contract operations.
+
+Q24. Can smart contracts be modified after deployment?
+
+Ans. Normally, deployed contract code is immutable. Changes require a new deployment or a specially designed upgrade mechanism.
+
+Q25. What is the difference between address and uint in Solidity?
+
+Ans.
+- address: Stores an Ethereum address.
+- uint: Stores an unsigned integer.
+
+
+Practical 4 – BT4
+Write a Program in Solidity to Create Student Data Using Structures, Arrays and Fallback. Deploy This as a Smart Contract on Ethereum and Observe Transaction Fee and Gas Values.
+Viva Questions & Answers
+Q1. What is a structure in Solidity?
+
+Ans. A structure (struct) is a user-defined data type used to group different types of variables under one name.
+
+Q2. What is an array in Solidity?
+
+Ans. An array is a collection of elements of the same data type stored under a single variable name.
+
+Q3. What is the purpose of this practical?
+
+Ans. To store and manage student information using structures and arrays and understand fallback functions, gas usage and transaction fees.
+
+Q4. What is the syntax of a structure in Solidity?
+
+Ans.
+struct Student {
+    uint id;
+    string name;
+    uint age;
+}
+
+
+Q5. What is the use of struct?
+
+Ans. It helps group related information such as student ID, name and age.
+
+Q6. What are the types of arrays in Solidity?
+
+Ans.
+1. Fixed-size array.
+2. Dynamic-size array.
+Q7. What is a dynamic array?
+
+Ans. A dynamic array is an array whose size can increase or decrease during program execution.
+
+Q8. What is the use of push() in Solidity?
+
+Ans. The push() function adds a new element to the end of a dynamic array.
+
+Q9. What is the use of length in an array?
+
+Ans. It returns the total number of elements present in an array.
+
+Q10. What is a fallback function?
+
+Ans. A fallback function is a special function that executes when a contract receives Ether without matching function data or when no matching function exists.
+
+Q11. What is the syntax of a fallback function?
+
+Ans.
+fallback() external payable {
+}
+
+
+Q12. What is the difference between fallback and receive functions?
+
+Ans.
+- receive(): Executes when Ether is received with empty calldata.
+- fallback(): Executes when no matching function is found or calldata is non-empty and no function matches.
+Q13. What is the use of external keyword?
+
+Ans. It specifies that a function can be called from outside the contract.
+
+Q14. What is the use of payable in fallback?
+
+Ans. It allows the fallback function to receive Ether.
+
+Q15. What is gas in Ethereum?
+
+Ans. Gas is the unit that measures the computational effort required to execute transactions and smart contract operations.
+
+Q16. What is gas limit?
+
+Ans. Gas limit is the maximum amount of gas a user is willing to allow a transaction to consume.
+
+Q17. What is gas price?
+
+Ans. Gas price is the amount paid per unit of gas, generally measured in Gwei.
+
+Q18. How do we calculate transaction fees?
+
+Ans.
+
+Transaction Fee = Gas Used × Effective Gas Price.
+
+Q19. What is the difference between Gas Used and Gas Limit?
+
+Ans.
+- Gas Used: Actual gas consumed by the transaction.
+- Gas Limit: Maximum gas allowed for the transaction.
+Q20. What is a transaction hash?
+
+Ans. A transaction hash is a unique identifier assigned to every blockchain transaction.
+
+Q21. What is the use of Remix IDE?
+
+Ans. Remix IDE is used to write, compile, deploy and test Solidity smart contracts.
+
+Q22. What is ABI?
+
+Ans. ABI stands for Application Binary Interface. It defines how external applications interact with a smart contract.
+
+Q23. What is bytecode?
+
+Ans. Bytecode is the machine-readable code generated by the Solidity compiler for deployment on the Ethereum Virtual Machine (EVM).
+
+Q24. What is EVM?
+
+Ans. EVM stands for Ethereum Virtual Machine. It executes smart contracts on the Ethereum blockchain.
+
+Q25. Why do we observe gas values after deployment?
+
+Ans. To understand the computational cost and transaction fees required to deploy and execute a smart contract.
+
+Q26. What is the difference between memory and storage in Solidity?
+
+Ans.
+- Memory: Temporary data that exists during function execution.
+- Storage: Permanent data stored on the blockchain.
+Q27. Can a structure contain different data types?
+
+Ans. Yes, a structure can contain different data types such as uint, string, bool and address.
+
+Q28. What happens if we call a fallback function with Ether?
+
+Ans. If the fallback function is payable, it can accept Ether.
+
+Q29. What is the Ethereum transaction fee paid in?
+
+Ans. It is paid in Ether (ETH).
+
+Q30. What is the purpose of deploying this contract on Ethereum?
+
+Ans. To make the student data smart contract available on the blockchain and observe its execution cost
