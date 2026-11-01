@@ -58,6 +58,7 @@ df.rename(columns={'pickup_datetime': 'pickup_datetime'}, inplace=True)
 
 # Convert pickup_datetime to datetime object
 df['pickup_datetime'] = pd.to_datetime(df['pickup_datetime'], errors='coerce')
+df.dropna(subset=['pickup_datetime'], inplace=True)
 
 # Extract useful datetime features
 df['hour'] = df['pickup_datetime'].dt.hour
